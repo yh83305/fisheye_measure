@@ -1,0 +1,10 @@
+<launch>
+    <!-- 启动图像发布节点 -->
+    <node
+        name="camera_rosbag"
+        pkg="my_package"
+        type="camera_rosbag.py"
+        output="screen">
+        <!-- 如果需要其他参数可以在这里添加 -->
+    </node>
+</launch>

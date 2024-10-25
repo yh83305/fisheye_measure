@@ -1,0 +1,5 @@
+Log file created at: 2024/10/12 15:58:45
+Running on machine: ubuntu-MS-7D90
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W1012 15:58:45.103942 1715512 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722181)Lost
+W1012 15:58:45.348090 1715512 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722181)ReConnected, TolCount:1

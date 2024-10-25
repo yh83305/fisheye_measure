@@ -1,0 +1,4 @@
+Log file created at: 2024/08/26 17:02:21
+Running on machine: ubuntu-MS-7D90
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0826 17:02:21.212214  8668 MVCAMAPI.cpp:350] CameraInit Failed, err:-18,Version:2.1.0.37,FriendlyName:MV-SUA133GM#0,SN:044010722171

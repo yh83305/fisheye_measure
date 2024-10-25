@@ -1,0 +1,18 @@
+<launch>
+    <!-- 启动图像发布节点 -->
+    <node
+        name="camera_publisher"
+        pkg="my_package"
+        type="camera_publisher.py"
+        output="screen">
+        <!-- 如果需要其他参数可以在这里添加 -->
+    </node>
+
+    <!-- 启动图像接收节点 -->
+    <node
+        name="image_listener"
+        pkg="my_package"
+        type="image_listener.py"
+        output="screen">
+    </node>
+</launch>

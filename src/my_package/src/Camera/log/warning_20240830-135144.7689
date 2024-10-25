@@ -1,0 +1,18 @@
+Log file created at: 2024/08/30 13:51:44
+Running on machine: ubuntu-MS-7D90
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W0830 13:51:44.317767  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost
+W0830 13:51:45.316342  7697 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722171)ReConnected, TolCount:1
+W0830 13:51:47.443804  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost
+W0830 13:51:47.687696  7697 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722171)ReConnected, TolCount:2
+W0830 13:51:49.815274  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost
+W0830 13:51:50.059540  7697 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722171)ReConnected, TolCount:3
+W0830 13:51:54.189285  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost
+W0830 13:51:56.193858  7697 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722171)ReConnected, TolCount:4
+W0830 13:51:58.321401  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost
+W0830 13:52:04.228202  7697 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722171)ReConnected, TolCount:5
+W0830 13:52:06.356590  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost
+W0830 13:52:13.016649  7697 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722171)ReConnected, TolCount:6
+W0830 13:52:15.144347  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost
+W0830 13:52:15.765784  7697 MVCameraBase.cpp:119] Device:(name:MV-SUA133GM#0 sn:044010722171)ReConnected, TolCount:7
+W0830 13:52:19.895586  7697 MVCameraBase.cpp:99] Device:(name:MV-SUA133GM#0 sn:044010722171)Lost

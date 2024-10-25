@@ -1,0 +1,76 @@
+<launch>
+  <!-- 第一台TurtleBot3的参数 -->
+  <arg name="model1" default="burger" />
+  <arg name="x_pos1" default="0.0"/>
+  <arg name="y_pos1" default="0.0"/>
+  <arg name="z_pos1" default="0.0"/>
+
+  <!-- 第二台TurtleBot3的参数 -->
+  <arg name="model2" default="burger" />
+  <arg name="x_pos2" default="4.0"/>
+  <arg name="y_pos2" default="0.0"/>
+  <arg name="z_pos2" default="0.0"/>
+
+  <!-- 启动Gazebo仿真环境 -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/empty.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- 加载第一个TurtleBot3 -->
+  <group ns="tb3_1">
+    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_multi_control)/turtlebot3_description/urdf/turtlebot3_$(arg model1).urdf.xacro" />
+    <param name="tf_prefix" value="tb3_1" />
+    <!-- robot_state_publisher with tf_prefix for tb3_1 -->
+    <node name="robot_state_publisher_tb3_1" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" />
+    
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_tb3_1" args="-urdf -model tb3_1 -x $(arg x_pos1) -y $(arg y_pos1) -z $(arg z_pos1) -param robot_description" />
+
+  </group>
+
+  <!-- 加载第二个TurtleBot3 -->
+  <group ns="tb3_2">
+    <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_multi_control)/turtlebot3_description/urdf/turtlebot3_$(arg model2).urdf.xacro" />
+    <param name="tf_prefix" value="tb3_2" />
+    <!-- robot_state_publisher with tf_prefix for tb3_2 -->
+    <node name="robot_state_publisher_tb3_2" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" />
+    
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_tb3_2" args="-urdf -model tb3_2 -x $(arg x_pos2) -y $(arg y_pos2) -z $(arg z_pos2) -param robot_description" />
+
+  </group>
+
+  <!-- 启动map_server，加载地图 -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find turtlebot3_multi_control)/maps/map2.yaml" output="screen"/>
+
+  <!-- 启动tb3_1的AMCL -->
+  <node name="amcl_tb3_1" pkg="amcl" type="amcl" output="screen">
+    <remap from="scan" to="/tb3_1/scan"/>
+    <param name="odom_frame_id" value="tb3_1/odom"/>
+    <param name="base_frame_id" value="tb3_1/base_footprint"/>
+    <param name="global_frame_id" value="map"/>
+    <param name="initial_pose_x" value="0.0"/>
+    <param name="initial_pose_y" value="0.0"/>
+    <param name="initial_pose_a" value="0.0"/>
+  </node>
+
+  <!-- 启动tb3_2的AMCL -->
+  <node name="amcl_tb3_2" pkg="amcl" type="amcl" output="screen">
+    <remap from="scan" to="/tb3_2/scan"/>
+    <param name="odom_frame_id" value="tb3_2/odom"/>
+    <param name="base_frame_id" value="tb3_2/base_footprint"/>
+    <param name="global_frame_id" value="map"/>
+    <param name="initial_pose_x" value="4.0"/>
+    <param name="initial_pose_y" value="0.0"/>
+    <param name="initial_pose_a" value="0.0"/>
+  </node>
+
+  <!-- 启动控制节点 -->
+  <node pkg="turtlebot3_multi_control" type="control_gazebo.py" name="control" output="screen"/>
+
+  <!-- 启动RViz可视化 -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find turtlebot3_multi_control)/rviz/multi_control.rviz" output="screen"/>
+</launch>
